@@ -167,7 +167,6 @@ endef
 
 MAKE_FLAGS+= \
 	NO_DEBUG_MESSAGES=1 \
-	DEBUG=0 \
 	OS="linux" \
 	DESTDIR="$(PKG_INSTALL_DIR)" \
 	STRIP="true" \
