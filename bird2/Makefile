@@ -8,7 +8,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=bird2
 PKG_VERSION:=2.0.2
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=bird-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=ftp://bird.network.cz/pub/bird
@@ -96,7 +96,8 @@ protocols, telling BIRD to show various information, telling it to show
 a routing table filtered by a filter, or asking BIRD to reconfigure.
 endef
 
-CONFIGURE_ARGS += --with-linux-headers="$(LINUX_DIR)"
+CONFIGURE_ARGS += --with-linux-headers="$(LINUX_DIR)" \
+	--disable-libssh
 
 define Package/bird2/conffiles
 /etc/bird.conf
