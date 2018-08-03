@@ -44,7 +44,9 @@ include $(INCLUDE_DIR)/package.mk
 
 TARGET_CFLAGS += $(FPIC)
 
-MAKE_ARGS += EXTRA_CFLAGS="$(TARGET_CFLAGS) -I. -I$(STAGING_DIR)/usr/include -DCRYPTLIB=MBEDTLS_2_4_0 -DCORE_LIMIT=20000 -DTRAFFIC_DUMP -DNO_TRACE_FUNCTION_CALLS -DBMX7_LIB_IWINFO"
+# -D_LINUX_LIST_H_ is a dirty hack to avoid namespace collision between bmx7's list.h and <libubux/list.h>
+# See https://github.com/bmx-routing/bmx7/issues/34
+MAKE_ARGS += EXTRA_CFLAGS="$(TARGET_CFLAGS) -I. -I$(STAGING_DIR)/usr/include -DCRYPTLIB=MBEDTLS_2_4_0 -DCORE_LIMIT=20000 -DTRAFFIC_DUMP -DNO_TRACE_FUNCTION_CALLS -DBMX7_LIB_IWINFO -D_LINUX_LIST_H_"
 
 MAKE_ARGS += \
         EXTRA_LDFLAGS="$(TARGET_LDFLAGS) -L$(STAGING_DIR)/usr/lib -liwinfo" \
